@@ -165,7 +165,7 @@ const setCwd = (pid, action) => {
             setGit(cwd);
         });
     }
-    
+
 };
 
 const isGit = (dir, cb) => {
@@ -191,7 +191,7 @@ const gitRemote = (repo, cb) => {
 }
 
 const gitDirty = (repo, cb) => {
-    exec(`git status --porcelain --ignore-submodules -uno`, { cwd: repo }, (err, stdout) => {
+    exec(`git --no-optional-locks status --porcelain --ignore-submodules -uno`, { cwd: repo }, (err, stdout) => {
         if (err) {
             return cb(err);
         }
